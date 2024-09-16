@@ -134,7 +134,7 @@ def main():
                     column_order=("project_title", "round_name", "url"),   
                     column_config = {
                         "project_title": "Grantee Name",
-                        "round_name": "Round",
+                        #"round_name": "Round",
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
@@ -177,7 +177,7 @@ def main():
                     column_order=("project_title", "round_name", "url"),   
                     column_config = {
                         "project_title": "Grantee Name",
-                        "round_name": "Round",
+                        #"round_name": "Round",
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
@@ -253,7 +253,7 @@ def main():
                             column_order=("project_title", "round_name", "url", "similarity_score"),   
                             column_config = {
                             "project_title": "Grantee Name",
-                            "round_name": "Round",
+                            #"round_name": "Round",
                             "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
                             "similarity_score": st.column_config.ProgressColumn(
                                 "Similarity Score",
@@ -296,7 +296,7 @@ def main():
                             column_order=("project_title", "round_name", "url", "similarity_score"),   
                             column_config = {
                             "project_title": "Grantee Name",
-                            "round_name": "Round",
+                            # "round_name": "Round",
                             "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
                             "similarity_score": st.column_config.ProgressColumn(
                                 "Similarity Score",
