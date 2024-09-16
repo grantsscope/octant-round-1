@@ -73,10 +73,10 @@ if address and address != 'None':
             
             # Fetch data using the query
             
-            try:
-                donations_df = fetch_data(query)
-            except Exception as e:
-                tcol2.error(f"Error fetching data: {e}",icon="🚨")            
+            #try:
+            #    donations_df = fetch_data(query)
+            #except Exception as e:
+            #    tcol2.error(f"Error fetching data: {e}",icon="🚨")            
             
             
             # Load latest applications for the round
@@ -107,17 +107,19 @@ if address and address != 'None':
                 # 1.4 Identigy projects in the round user has already donated to
                 
                 
-                user_donations_df = donations_df[donations_df['donor_address'] == address]
+                #user_donations_df = donations_df[donations_df['donor_address'] == address]
                 
-                merged_user_df = filtered_apps_df.merge(
-                user_donations_df[['recipient_address', 'round_id']],
-                left_on=['recipient', 'round_id'],
-                right_on=['recipient_address', 'round_id'],
-                how='left',
-                indicator=True
-                )
+                merged_user_df = filtered_apps_df
+
+                #merged_user_df = filtered_apps_df.merge(
+                #user_donations_df[['recipient_address', 'round_id']],
+                #left_on=['recipient', 'round_id'],
+                #right_on=['recipient_address', 'round_id'],
+                #how='left',
+                #indicator=True
+                #)
                 
-                merged_user_df['donation_found'] = merged_user_df['_merge'].apply(lambda x: '✅' if x == 'both' else '')
+                #merged_user_df['donation_found'] = merged_user_df['_merge'].apply(lambda x: '✅' if x == 'both' else '')
                 merged_user_df.drop(columns=['recipient_address', '_merge'], inplace=True)
                 merged_user_df = merged_user_df.sort_values(by='project_title')    
                 
@@ -126,12 +128,11 @@ if address and address != 'None':
                 tcol2.markdown(f"Out of the {len(supported_by_user)} grantees you supported since GG18, here are those participating in the Octant Community round. Show them some love again!")
                 
                 tcol2.dataframe(merged_user_df, hide_index=True, use_container_width=True,
-                column_order=("project_title", "round_name", "url", "donation_found"),   
+                column_order=("project_title", "round_name", "url"),   
                 column_config = {
                     "project_title": "Grantee Name",
                     "round_name": "Round",
-                    "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
-                    "donation_found": "Donated?"
+                    "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                     } 
                 )
                 log_dataframe(merged_user_df, '1. Cherished Allies')            
