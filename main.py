@@ -131,10 +131,9 @@ def main():
                     tcol2.markdown(f"Out of the {len(supported_by_user)} grantees you supported since GG18, here are those participating in the Octant Community round. Show them some love again!")
                     
                     tcol2.dataframe(merged_user_df, hide_index=True, use_container_width=True,
-                    column_order=("project_title", "round_name", "url"),   
+                    column_order=("project_title", "url"),   
                     column_config = {
                         "project_title": "Grantee Name",
-                        #"round_name": "Round",
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
@@ -174,10 +173,9 @@ def main():
                     Here are their most supported grantees in the round that you have not previously donated to.")
                     
                     tcol2.dataframe(cohort_df, hide_index=True, use_container_width=True,
-                    column_order=("project_title", "round_name", "url"),   
+                    column_order=("project_title", "url"),   
                     column_config = {
                         "project_title": "Grantee Name",
-                        #"round_name": "Round",
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
@@ -250,10 +248,9 @@ def main():
                         
                         recommendations_df = recommendations_df.sort_values(by=['similarity_score', 'project_title'], ascending=[False, True])
                         tcol2.dataframe(recommendations_df.head(20), hide_index=True, use_container_width=True,
-                            column_order=("project_title", "round_name", "url", "similarity_score"),   
+                            column_order=("project_title", "url", "similarity_score"),   
                             column_config = {
                             "project_title": "Grantee Name",
-                            #"round_name": "Round",
                             "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
                             "similarity_score": st.column_config.ProgressColumn(
                                 "Similarity Score",
@@ -293,10 +290,9 @@ def main():
                         
                         recommendations_df = recommendations_df.sort_values(by=['similarity_score', 'project_title'], ascending=[True, True])
                         tcol2.dataframe(recommendations_df.head(20), hide_index=True, use_container_width=True,
-                            column_order=("project_title", "round_name", "url", "similarity_score"),   
+                            column_order=("project_title", "url", "similarity_score"),   
                             column_config = {
                             "project_title": "Grantee Name",
-                            # "round_name": "Round",
                             "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
                             "similarity_score": st.column_config.ProgressColumn(
                                 "Similarity Score",
