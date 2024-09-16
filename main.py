@@ -134,7 +134,21 @@ def main():
                     #    tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
 
                     html_template = """
-                    <div style="margin: 10px; padding: 10px; border-radius: 10px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
+                    <style>
+                        .row-container:nth-child(odd) {
+                            background-color: #f9f9f9; /* Light gray background for odd rows */
+                        }
+                        .row-container {
+                            margin: 10px; 
+                            padding: 10px; 
+                            border-radius: 10px; 
+                            border: 1px solid #ccc; 
+                            display: flex; 
+                            justify-content: space-between; 
+                            align-items: center;
+                        }
+                    </style>
+                    <div class="row-container">
                         <h5 style="margin: 0; padding: 0; display: flex; align-items: center;">{name}</h5>
                         <a href="{url}" target="_blank" style="display: flex; align-items: center;">Donate</a>
                     </div>
