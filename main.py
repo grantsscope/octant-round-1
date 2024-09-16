@@ -120,7 +120,7 @@ if address and address != 'None':
                 #)
                 
                 #merged_user_df['donation_found'] = merged_user_df['_merge'].apply(lambda x: '✅' if x == 'both' else '')
-                merged_user_df.drop(columns=['recipient_address', '_merge'], inplace=True)
+                #merged_user_df.drop(columns=['recipient_address', '_merge'], inplace=True)
                 merged_user_df = merged_user_df.sort_values(by='project_title')    
                 
                 
