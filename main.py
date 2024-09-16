@@ -176,6 +176,10 @@ def main():
                     tcol2.markdown(f"{len(donors_to_top_recipients)} donors have supported the top 5 grantees you have contributed, since GG18. \
                     Here are their most supported grantees in the round that you have not previously donated to.")
                     
+                    for index, row in cohort_df.iterrows():
+                        tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+
+                    """
                     tcol2.dataframe(cohort_df, hide_index=True, use_container_width=True,
                     column_order=("project_title", "url"),   
                     column_config = {
@@ -183,6 +187,7 @@ def main():
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
+                    """
                     log_dataframe(cohort_df, '2. Community Favorites')            
                     
                     # STEP 3: Show projects similar to user's previous contributions and recommendations in Step 2 using clustering
