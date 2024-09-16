@@ -124,12 +124,15 @@ def main():
                     
                     #merged_user_df['donation_found'] = merged_user_df['_merge'].apply(lambda x: '✅' if x == 'both' else '')
                     #merged_user_df.drop(columns=['recipient_address', '_merge'], inplace=True)
-                    merged_user_df = merged_user_df.sort_values(by='project_title')    
+                    #merged_user_df = merged_user_df.sort_values(by='project_title')    
                     
                     
                     tcol2.markdown("#### 1. Cherished Allies: List of grantees in the round who you have contributed in the past")
                     tcol2.markdown(f"Out of the {len(supported_by_user)} grantees you supported since GG18, here are those participating in the Octant Community round. Show them some love again!")
                     
+                    for index, row in merged_user_df.iterrows():
+                        tcol2.markdown(f"[{row['project_title']}]({row['url']}) - Click to donate")
+                    """
                     tcol2.dataframe(merged_user_df, hide_index=True, use_container_width=True,
                     column_order=("project_title", "url"),   
                     column_config = {
@@ -137,17 +140,8 @@ def main():
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
-                    log_dataframe(merged_user_df, '1. Cherished Allies')   
-
-                    html_template = """
-                    <div style="margin: 10px; padding: 10px; border-radius: 10px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
-                        <h4>{name}</h4>
-                        <a href="{url}" target="_blank">Donate</a>
-                    </div>
                     """
-                    
-                    for index, row in merged_user_df.iterrows():
-                        tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
+                    log_dataframe(merged_user_df, '1. Cherished Allies')   
                              
                     # STEP 2: Display recommendations using contributor graph
                     
