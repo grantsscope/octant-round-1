@@ -137,8 +137,18 @@ def main():
                         "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
                         } 
                     )
-                    log_dataframe(merged_user_df, '1. Cherished Allies')            
+                    log_dataframe(merged_user_df, '1. Cherished Allies')   
+
+                    html_template = """
+                    <div style="margin: 10px; padding: 10px; border-radius: 10px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
+                        <h4>{name}</h4>
+                        <a href="{url}" target="_blank">Donate</a>
+                    </div>
+                    """
                     
+                    for index, row in merged_user_df.iterrows():
+                        tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
+                             
                     # STEP 2: Display recommendations using contributor graph
                     
                     # 2.1 - Find the top most contributed projects by the user
