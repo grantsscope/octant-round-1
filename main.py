@@ -135,7 +135,7 @@ def main():
 
                     html_template = """
                     <div style="margin: 10px; padding: 10px; border-radius: 10px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
-                        <h4>{name}</h4>
+                        <h5>{name}</h5>
                         <a href="{url}" target="_blank">Donate</a>
                     </div>
                     """
