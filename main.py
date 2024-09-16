@@ -132,15 +132,7 @@ def main():
                     
                     for index, row in merged_user_df.iterrows():
                         tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
-                    """
-                    tcol2.dataframe(merged_user_df, hide_index=True, use_container_width=True,
-                    column_order=("project_title", "url"),   
-                    column_config = {
-                        "project_title": "Grantee Name",
-                        "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
-                        } 
-                    )
-                    """
+                
                     log_dataframe(merged_user_df, '1. Cherished Allies')   
                              
                     # STEP 2: Display recommendations using contributor graph
@@ -179,15 +171,6 @@ def main():
                     for index, row in cohort_df.iterrows():
                         tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
 
-                    """
-                    tcol2.dataframe(cohort_df, hide_index=True, use_container_width=True,
-                    column_order=("project_title", "url"),   
-                    column_config = {
-                        "project_title": "Grantee Name",
-                        "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart")
-                        } 
-                    )
-                    """
                     log_dataframe(cohort_df, '2. Community Favorites')            
                     
                     # STEP 3: Show projects similar to user's previous contributions and recommendations in Step 2 using clustering
