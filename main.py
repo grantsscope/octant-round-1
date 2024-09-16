@@ -239,20 +239,10 @@ def main():
                         tcol2.markdown("We looked at the cluster of top grantees you have supported and found out similar grantees in the round using Large Language Models (LLMs)")
                         
                         recommendations_df = recommendations_df.sort_values(by=['similarity_score', 'project_title'], ascending=[False, True])
-                        tcol2.dataframe(recommendations_df.head(20), hide_index=True, use_container_width=True,
-                            column_order=("project_title", "url", "similarity_score"),   
-                            column_config = {
-                            "project_title": "Grantee Name",
-                            "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
-                            "similarity_score": st.column_config.ProgressColumn(
-                                "Similarity Score",
-                                help="Range 0 to 1",
-                                format="%.1f",
-                                min_value=0.0,
-                                max_value=1.0,
-                            )
-                            } 
-                        )   
+
+                        for index, row in recommendations_df.iterrows():
+                            tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+
                         log_dataframe(recommendations_df.head(20), '3. Likeminded Visionaries')
                     
                     
@@ -281,20 +271,9 @@ def main():
                         tcol2.markdown("Here are projects that differ the most from your usual picks.")
                         
                         recommendations_df = recommendations_df.sort_values(by=['similarity_score', 'project_title'], ascending=[True, True])
-                        tcol2.dataframe(recommendations_df.head(20), hide_index=True, use_container_width=True,
-                            column_order=("project_title", "url", "similarity_score"),   
-                            column_config = {
-                            "project_title": "Grantee Name",
-                            "url": st.column_config.LinkColumn(label = "Donation Link", display_text = "Add to cart"),
-                            "similarity_score": st.column_config.ProgressColumn(
-                                "Similarity Score",
-                                help="Range 0 to 1",
-                                format="%.1f",
-                                min_value=0.0,
-                                max_value=1.0,
-                            )
-                            } 
-                        )   
+                        for index, row in recommendations_df.iterrows():
+                            tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+                            
                         log_dataframe(recommendations_df.head(20), '4. Discover New Perspectives')    
         
 if __name__ == "__main__":
