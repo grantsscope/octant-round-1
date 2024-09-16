@@ -134,21 +134,7 @@ def main():
                     #    tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
 
                     html_template = """
-                    <style>
-                        .row-container:nth-child(odd) {
-                            background-color: #f9f9f9; /* Light gray background for odd rows */
-                        }
-                        .row-container {
-                            margin: 10px; 
-                            padding: 10px; 
-                            border-radius: 10px; 
-                            border: 1px solid #ccc; 
-                            display: flex; 
-                            justify-content: space-between; 
-                            align-items: center;
-                        }
-                    </style>
-                    <div class="row-container">
+                    <div style="margin: 10px; padding: 10px; border-radius: 10px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
                         <h5 style="margin: 0; padding: 0; display: flex; align-items: center;">{name}</h5>
                         <a href="{url}" target="_blank" style="display: flex; align-items: center;">Donate</a>
                     </div>
@@ -156,6 +142,7 @@ def main():
                     
                     for index, row in merged_user_df.iterrows():
                         tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
+
                 
                     log_dataframe(merged_user_df, '1. Cherished Allies')   
                              
@@ -193,7 +180,8 @@ def main():
                     Here are their most supported grantees in the round that you have not previously donated to.")
                     
                     for index, row in cohort_df.iterrows():
-                        tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+                        tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
+
 
                     log_dataframe(cohort_df, '2. Community Favorites')            
                     
@@ -265,7 +253,7 @@ def main():
                         recommendations_df = recommendations_df.sort_values(by=['similarity_score', 'project_title'], ascending=[False, True])
 
                         for index, row in recommendations_df.iterrows():
-                            tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+                            tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
 
                         log_dataframe(recommendations_df.head(20), '3. Likeminded Visionaries')
                     
@@ -296,7 +284,7 @@ def main():
                         
                         recommendations_df = recommendations_df.sort_values(by=['similarity_score', 'project_title'], ascending=[True, True])
                         for index, row in recommendations_df.iterrows():
-                            tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+                            tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
                             
                         log_dataframe(recommendations_df.head(20), '4. Discover New Perspectives')    
         
