@@ -131,7 +131,7 @@ def main():
                     tcol2.markdown(f"Out of the {len(supported_by_user)} grantees you supported since GG18, here are those participating in the Octant Community round. Show them some love again!")
                     
                     for index, row in merged_user_df.iterrows():
-                        tcol2.markdown(f"[{row['project_title']}]({row['url']}) - Click to donate")
+                        tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
                     """
                     tcol2.dataframe(merged_user_df, hide_index=True, use_container_width=True,
                     column_order=("project_title", "url"),   
