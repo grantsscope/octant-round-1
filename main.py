@@ -130,8 +130,18 @@ def main():
                     tcol2.markdown("#### 1. Cherished Allies: List of grantees in the round who you have contributed in the past")
                     tcol2.markdown(f"Out of the {len(supported_by_user)} grantees you supported since GG18, here are those participating in the Octant Community round. Show them some love again!")
                     
+                    #for index, row in merged_user_df.iterrows():
+                    #    tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+
+                    html_template = """
+                    <div style="margin: 10px; padding: 10px; border-radius: 10px; border: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
+                        <h4>{name}</h4>
+                        <a href="{url}" target="_blank">Donate</a>
+                    </div>
+                    """
+                    
                     for index, row in merged_user_df.iterrows():
-                        tcol2.markdown(f"- [{row['project_title']}]({row['url']})")
+                        tcol2.markdown(html_template.format(name=row['project_title'], url=row['url']), unsafe_allow_html=True)
                 
                     log_dataframe(merged_user_df, '1. Cherished Allies')   
                              
