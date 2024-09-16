@@ -36,15 +36,14 @@ def main():
     apps_query_path = './queries/apps.sql'
     
     
-    # Add header
-    tcol2.title("GrantsScope for Octant Community Round 1")
+    tcol2.title("Explore Octant Community Round 1 with GrantsScope")
     tcol2.caption("Created by [Rohit Malekar](https://twitter.com/rohitmalekar) | [grantsscope.xyz](https://grantsscope.xyz)")
-    tcol2.markdown("### Get one-click personalized grantee recommendations based on your Gitcoin Grants donation history")
-    tcol2.markdown('We\'re excited to offer you curated recommendations to enhance your contribution experience. Here\'s what you can expect:')
-    tcol2.markdown('1. **Cherished Allies:** Re-discover the grantees you\'ve supported in the past.' + '\n' \
-                '2. **Community Favorites:** Explore grantees backed by the community who also champion your favorite grantees.' + '\n' \
-                '3. **Likeminded Visionaries:** We\'ll introduce you to grantees similar to those you\'ve previously supported.'  + '\n' \
-                '4. **New Perspectives:** Throw a light on the corners of public goods you have peeked the least.')
+    tcol2.markdown("### Instantly receive personalized grantee recommendations tailored to your previous Gitcoin Grants contributions.")
+    tcol2.markdown('Enhance your contribution experience with our curated recommendations. You can look forward to:')
+    tcol2.markdown('1. **Cherished Allies:** Rediscover the grantees you\'ve supported in past rounds.' + '\n' \
+                    '2. **Community Favorites:** Explore projects endorsed by the community and aligned with your favorites.' + '\n' \
+                    '3. **Likeminded Visionaries:** Meet grantees who match your support profile from previous contributions.'  + '\n' \
+                    '4. **New Perspectives:** Explore less familiar territories in public goods that could use your support.')
     tcol2.link_button("Donate to GrantsScope", "https://explorer.gitcoin.co/#/round/10/66/53",type="primary")
     
     
